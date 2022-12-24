@@ -15,6 +15,8 @@
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@tanstack/react-query": "^4.20.4",
+    "@tanstack/react-query-devtools": "^4.20.4",
     "framer-motion": "^8.0.1",
     "next": "12.3.4",
     "react": "^18.2.0",
