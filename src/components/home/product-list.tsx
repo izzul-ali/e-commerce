@@ -21,7 +21,7 @@ export default function ProductList() {
                   <ProductCard
                     img={v.image}
                     price={String(v.price)}
-                    rate={String(v.rating.rate)}
+                    rating={String(v.rating.rate)}
                     title={v.title}
                   />
                 </a>
