@@ -1,5 +1,7 @@
 import Carousel, { Settings } from 'react-slick'
+import { useProducts } from '~/store/products'
 import HeroCard from '../hero-card'
+import HeroCardLoading from '../skletons/loading-hero-card'
 import '~/slick-carousel/slick/slick.css'
 import '~/slick-carousel/slick/slick-theme.css'
 
@@ -15,13 +17,19 @@ const carouselSetting: Settings = {
 }
 
 export default function Hero() {
+  const { data: products, isLoading, isRefetching } = useProducts()
+
   return (
     <div className="w-full h-40 sm:h-52 bg-white px-4 hover:shadow-xl shadow-lg rounded-lg flex justify-center items-center">
-      <Carousel {...carouselSetting} className="h-fit w-full">
-        {[...Array(5)].map((_, i) => (
-          <HeroCard key={i} />
-        ))}
-      </Carousel>
+      {isLoading || isRefetching ? (
+        <HeroCardLoading />
+      ) : (
+        <Carousel {...carouselSetting} className="h-fit w-full">
+          {products.slice(8, 12).map((v, i) => (
+            <HeroCard key={i} img={v.image} title={v.title} />
+          ))}
+        </Carousel>
+      )}
     </div>
   )
 }
