@@ -12,7 +12,7 @@ export default function ProductCard({ img, price, rating, title }: Product) {
   const [favorite, setFavorite] = useState<boolean>(false)
 
   return (
-    <div className="h-[19rem] sm:h-[20rem] shadow-md w-full border border-gray-300 hover:border-violet-500 transition duration-300 rounded-md overflow-hidden">
+    <div className="h-[19rem] sm:h-[20rem] shadow-md w-full border border-gray-300 hover:border-violet-500 hover:-translate-y-1 transition duration-300 rounded-md overflow-hidden">
       <img
         src={img}
         alt={title}
@@ -26,7 +26,9 @@ export default function ProductCard({ img, price, rating, title }: Product) {
           <span>⭐️</span> {rating}
         </p>
         <div className="flex justify-between items-center px-2">
-          <p className="font-medium">${price}</p>
+          <p className="font-medium text-sm">
+            Rp <span className="tracking-wide">{price}</span>
+          </p>
           <button
             onClick={() => setFavorite((prev) => !prev)}
             className="outline-none"
