@@ -12,7 +12,8 @@ const client = new QueryClient({
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
-      retry: 1
+      retry: 1,
+      retryOnMount: false
     }
   }
 })
@@ -23,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Layout>
         <Component {...pageProps} />
       </Layout>
-      <ReactQueryDevtools />
+      <ReactQueryDevtools panelPosition="bottom" />
     </QueryClientProvider>
   )
 }
