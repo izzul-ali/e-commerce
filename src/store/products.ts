@@ -3,13 +3,13 @@ import { Product } from '~/type/product'
 
 const fecthAllProducts = async () => {
   const resp = await fetch('https://fakestoreapi.com/products')
-  const data: Product[] = await resp.json()
+  const data = (await resp.json()) as unknown as Product[]
   return data
 }
 
 const fecthProductById = async (id: string) => {
   const resp = await fetch(`https://fakestoreapi.com/products/${id}`)
-  const data: Product = await resp.json()
+  const data = (await resp.json()) as unknown as Product
   return data
 }
 
@@ -18,5 +18,7 @@ export const useProducts = () => {
 }
 
 export const useProductById = (id: string) => {
-  return useQuery(['product-id', id], () => fecthProductById(id))
+  return useQuery(['product-id', id], () => fecthProductById(id), {
+    keepPreviousData: true
+  })
 }
