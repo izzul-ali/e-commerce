@@ -4,7 +4,7 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai'
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <main className="p-5 max-w-4xl mx-auto">
+    <main className="p-5 max-w-4xl mx-auto font-primary">
       <div className="absolute bg-violet-600 left-0 right-0 top-0 h-52 -z-20 rounded-b-2xl"></div>
       <header className="flex justify-between">
         <h1 className="text-2xl text-white font-medium">E-Commerce</h1>
