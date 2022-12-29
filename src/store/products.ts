@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { Product } from '~/type/product'
+import { Product } from './types'
 
 const fecthAllProducts = async () => {
   const resp = await fetch('https://fakestoreapi.com/products')
@@ -13,11 +13,11 @@ const fecthProductById = async (id: string) => {
   return data
 }
 
-export const useProducts = () => {
+export const getProducts = () => {
   return useQuery(['products-list'], () => fecthAllProducts())
 }
 
-export const useProductById = (id: string) => {
+export const getProductById = (id: string) => {
   return useQuery(['product-id', id], () => fecthProductById(id), {
     keepPreviousData: true
   })
