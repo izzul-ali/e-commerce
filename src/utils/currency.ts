@@ -7,7 +7,7 @@ export const formatCurrency = (usd: number): string => {
     currency: 'IDR'
   }).format(usd * idr)
 
-  if (usdToIdr.match('NaN') || String(usd)[0] === '0') {
+  if (usdToIdr.match('NaN') || usd.toFixed() === '0') {
     return 'Rp 0,-'
   }
 
