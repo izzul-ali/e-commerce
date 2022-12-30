@@ -1,5 +1,7 @@
-import { AiOutlineHeart, AiOutlineShareAlt } from 'react-icons/ai'
-import { prices } from '~/constant/price'
+import { useEffect, useState } from 'react'
+import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai'
+import { formatCurrency } from '~/utils/currency'
+import useWishlist from '~/store/wishlist'
 
 type ProductDetail = {
   id: number
@@ -7,40 +9,57 @@ type ProductDetail = {
   title: string
   stok: number
   description: string
+  price: number
 }
 
 export default function Detail({
+  id,
   img,
   description,
-  id,
   stok,
-  title
+  title,
+  price
 }: ProductDetail) {
+  const saveToWishlist = useWishlist((state) => state.addToWishlist)
+  const [save, setSave] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (save) {
+      saveToWishlist({
+        id,
+        img,
+        price,
+        title
+      })
+    }
+  }, [save])
   return (
-    <div className="mb-20">
+    <div className="mb-20 lg:mb-28">
       <img
         src={img}
         alt={title}
-        className="rounded w-full h-60 object-contain"
+        className="rounded w-full h-60 object-contain bg-white"
       />
       <div className="sm:px-3 space-y-5 mt-10">
         <div className="flex justify-between items-center">
-          <p className="text-xl font-medium">
-            Rp <span className="tracking-wide">{prices[id - 1]}</span>
-          </p>
-          <div className="inline-flex gap-x-3 items-center">
-            <AiOutlineHeart className="w-6 h-fit" />
-            <AiOutlineShareAlt className="w-6 h-fit" />
-          </div>
+          <h3 className="font-semibold text-xl">{formatCurrency(price)}</h3>
+
+          <button onClick={() => setSave((prev) => !prev)}>
+            {save ? (
+              <AiFillHeart className="w-7 h-fit fill-violet-600" />
+            ) : (
+              <AiOutlineHeart className="w-7 h-fit fill-violet-600" />
+            )}
+          </button>
         </div>
 
         <h2 className="text-2xl font-semibold line-clamp-2">{title}</h2>
 
-        <p className="text-gray-700">Stok: {stok}</p>
+        <h3 className="">Stok: {stok}</h3>
 
         <div className="space-y-2">
-          <h3 className="text-gray-800">Description</h3>
-          <p className="text-sm leading-normal text-gray-700">{description} </p>
+          <h3 className="border-b border-gray-200">Description</h3>
+          <p className="text-sm leading-normal">{description} </p>
         </div>
       </div>
     </div>
