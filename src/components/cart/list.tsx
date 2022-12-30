@@ -5,7 +5,6 @@ import EmptyCart from './empty-cart'
 export default function List() {
   const { totalProductInCarts, carts } = useCart()
 
-  console.log('rerender')
   return (
     <div className="grid grid-cols-1 gap-7">
       {totalProductInCarts() === 0 ? (
