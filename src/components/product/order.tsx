@@ -67,6 +67,7 @@ export default function Order({ id, img, title, stok, price }: TOrder) {
         </div>
 
         <button
+          aria-label="btn-cart"
           type="button"
           onClick={() => {
             appendToCarts({
