@@ -1,17 +1,19 @@
 import Link from 'next/link'
-import { useProducts } from '~/store/products'
-import { prices } from '~/constant/price'
-import ErrorProduct from '../fallback/error-product'
+import { formatCurrency } from '~/utils/currency'
+import { getProducts } from '~/store/products'
 import ProductCardLoading from '../fallback/skleton-product-card'
-import ProductCard from '../product-card'
+import ErrorProduct from '../fallback/error-product'
+import ProductCard from './product-card'
 
 export default function ProductList() {
-  const { data: products, isLoading, isRefetching, isError } = useProducts()
+  const { data: products, isLoading, isRefetching, isError } = getProducts()
 
   return (
     <>
       <div className="mt-10 flex justify-between items-center">
-        <h2 className="text-xl sm:text-2xl font-semibold">Special For You</h2>
+        <h2 className="text-xl sm:text-2xl tracking-wide font-semibold">
+          Rekomendasi
+        </h2>
       </div>
       <div className="mt-5 grid grid-cols-2 sm:grid-cols-3 gap-x-2 gap-y-5 place-content-between">
         {isLoading || isRefetching ? (
@@ -21,10 +23,10 @@ export default function ProductList() {
         ) : (
           products?.map((v, i) => (
             <Link href={`/product/${v.id}`} key={i}>
-              <a key={i}>
+              <a>
                 <ProductCard
                   img={v.image}
-                  price={prices[i]}
+                  price={formatCurrency(v.price)}
                   rating={String(v.rating.rate)}
                   title={v.title}
                 />
