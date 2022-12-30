@@ -8,7 +8,7 @@ export default function ProductCardLoading() {
         <p className="text-xs bg-gray-300 animate-pulse py-2 px-6  w-fit rounded-md"></p>
         <div className="flex justify-between items-center ">
           <p className="font-medium px-6 py-2 bg-gray-300 animate-pulse rounded"></p>
-          <button className="outline-none px-6 py-2 bg-gray-300 animate-pulse rounded"></button>
+          <button className="px-6 py-2 bg-gray-300 animate-pulse rounded"></button>
         </div>
       </div>
     </div>
