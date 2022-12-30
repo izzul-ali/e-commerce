@@ -4,6 +4,7 @@ import { formatCurrency } from '~/utils/currency'
 import { useEffect, useState } from 'react'
 import useCart from '~/store/cart'
 import useCount from '~/hooks/useCount'
+import Link from 'next/link'
 
 type CartDetail = {
   id: number
@@ -37,11 +38,20 @@ export default function Card({
 
   return (
     <div className="flex justify-between gap-x-4 h-32 py-2 px-1 rounded shadow-md border-t border-gray-200">
-      <img src={img} alt={title} className="w-1/2 h-full object-contain" />
+      <Link href={`/product/${id}`}>
+        <a className="w-1/2 h-full">
+          <img src={img} alt={title} className="w-full h-full object-contain" />
+        </a>
+      </Link>
+
       <div className="w-full flex flex-col gap-y-1 justify-between pr-2">
-        <h3 className="text-base font-semibold line-clamp-2 leading-snug">
-          {title}
-        </h3>
+        <Link href={`/product/${id}`}>
+          <a>
+            <h3 className="text-base font-semibold line-clamp-2 leading-snug">
+              {title}
+            </h3>
+          </a>
+        </Link>
 
         <p className="flex-1 text-sm text-gray-600">{formatCurrency(price)}</p>
 
@@ -49,14 +59,14 @@ export default function Card({
           <input
             type="checkbox"
             name="select"
-            defaultChecked={isSelected}
+            checked={isSelected}
             onChange={(e) => {
               setSelectedProduct(id, e.target.checked)
             }}
             className="w-4 h-4 accent-violet-600"
           />
 
-          <div className="flex items-center gap-x-2">
+          <div className="sm:flex-1 flex items-center justify-center gap-x-2">
             <button
               onClick={() => deleteFromCarts(id)}
               className="bg-gray-50 rounded px-2 py-[3px]"
@@ -64,7 +74,7 @@ export default function Card({
               <BsTrash className="fill-gray-600" />
             </button>
             <div className="w-fit text-gray-600 border border-gray-300 rounded flex justify-center items-center gap-x-5 px-2">
-              <div className="[&>button]:outline-none flex items-center gap-x-1">
+              <div className="flex items-center gap-x-1">
                 <button
                   disabled={newCount <= 1}
                   onClick={() => handleDecrementCount()}
@@ -84,7 +94,7 @@ export default function Card({
                   onChange={(e) =>
                     handleInputCount(e.target.valueAsNumber, stok)
                   }
-                  className="rounded w-10 outline-none text-center bg-inherit"
+                  className="rounded w-10 text-center bg-inherit"
                 />
                 <button
                   disabled={newCount >= stok}
