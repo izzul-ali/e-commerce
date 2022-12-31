@@ -8,6 +8,7 @@ export default function Document() {
           name="description"
           content="eksperimen membuat aplikasi e-commerce sederhana yang dibuat dengan next.js dan zustand sebagai state management"
         />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
