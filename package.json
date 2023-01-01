@@ -21,6 +21,7 @@
     "@tanstack/react-query-devtools": "^4.20.4",
     "framer-motion": "^8.0.1",
     "next": "12.3.4",
+    "next-pwa": "^5.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
