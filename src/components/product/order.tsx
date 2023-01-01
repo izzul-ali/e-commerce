@@ -30,8 +30,8 @@ export default function Order({ id, img, title, stok, price }: TOrder) {
   return (
     <div className="fixed bottom-0 right-0 left-0 md:right-20 lg:right-40 md:left-20 lg:left-40 sm:right-10 sm:left-10 py-5 z-10 bg-white">
       {notif && <NotifAddToCart closeNotif={setNotif} />}
-      <div className="flex justify-between items-center gap-x-5">
-        <div className="text-gray-600 flex justify-center items-center gap-x-5 w-full md:text-lg lg:text-xl">
+      <div className="w-full flex justify-between items-center gap-x-1 px-3">
+        <div className="text-gray-600 flex justify-center items-center gap-x-3 w-full md:text-lg lg:text-xl">
           <p className="font-medium">Total</p>
           <div className="flex items-center gap-x-1">
             <button
