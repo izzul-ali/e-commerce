@@ -11,7 +11,6 @@ export default function Checkout() {
         <p>{formatCurrency(totalPrice)}</p>
       </div>
       <button
-        onClick={() => console.log('first')}
         disabled={totalPrice.toFixed() === '0'}
         className={`${
           totalPrice.toFixed() === '0' ? 'opacity-70' : 'opacity-100'
