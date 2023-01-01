@@ -18,7 +18,7 @@ const carouselSetting: Settings = {
 }
 
 export default function Hero() {
-  const { data: products, isLoading, isRefetching, isError } = getProducts()
+  const { data, isLoading, isRefetching, isError } = getProducts()
 
   return (
     <div className="w-full h-40 sm:h-52 bg-white px-4 hover:shadow-xl shadow-lg rounded-lg flex justify-center items-center">
@@ -26,10 +26,10 @@ export default function Hero() {
         <HeroCardLoading />
       ) : (
         <Carousel {...carouselSetting} className="h-fit w-full">
-          {products?.slice(8, 12).map((v, i) => (
+          {data?.products?.slice(8, 12).map((v, i) => (
             <Link href={`/product/${v.id}`} key={i}>
               <a>
-                <HeroCard img={v.image} title={v.title} />
+                <HeroCard img={v.images[0]} title={v.title} />
               </a>
             </Link>
           ))}

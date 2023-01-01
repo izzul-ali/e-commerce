@@ -43,19 +43,19 @@ export default function Product() {
               <Detail
                 id={product.id}
                 description={product.description}
-                img={product.image}
+                img={product.images[0]}
                 price={product.price}
-                stok={product.rating.count}
+                stok={product.stock}
                 title={product.title}
               />
             )}
           </motion.div>
           <Order
             id={product?.id}
-            img={product?.image}
+            img={product?.images[0]}
             title={product?.title}
             price={product?.price}
-            stok={product?.rating.count}
+            stok={product?.stock}
           />
         </AnimatePresence>
       </div>

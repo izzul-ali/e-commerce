@@ -6,7 +6,7 @@ import ErrorProduct from '../fallback/error-product'
 import ProductCard from './product-card'
 
 export default function ProductList() {
-  const { data: products, isLoading, isRefetching, isError } = getProducts()
+  const { data, isLoading, isRefetching, isError } = getProducts()
 
   return (
     <>
@@ -21,13 +21,13 @@ export default function ProductList() {
         ) : isError ? (
           <ErrorProduct />
         ) : (
-          products?.map((v, i) => (
+          data?.products?.map((v, i) => (
             <Link href={`/product/${v.id}`} key={i}>
               <a>
                 <ProductCard
-                  img={v.image}
+                  img={v.images[0]}
                   price={formatCurrency(v.price)}
-                  rating={String(v.rating.rate)}
+                  rating={String(v.rating)}
                   title={v.title}
                 />
               </a>

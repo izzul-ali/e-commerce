@@ -1,14 +1,14 @@
 import { useQuery } from '@tanstack/react-query'
-import { Product } from './types'
+import { ResponseApi, Product } from './types'
 
 const fecthAllProducts = async () => {
-  const resp = await fetch('https://fakestoreapi.com/products')
-  const data = (await resp.json()) as unknown as Product[]
+  const resp = await fetch('https://dummyjson.com/products')
+  const data = (await resp.json()) as unknown as ResponseApi
   return data
 }
 
 const fecthProductById = async (id: string) => {
-  const resp = await fetch(`https://fakestoreapi.com/products/${id}`)
+  const resp = await fetch(`https://dummyjson.com/products/${id}`)
   const data = (await resp.json()) as unknown as Product
   return data
 }

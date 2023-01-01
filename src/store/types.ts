@@ -1,16 +1,22 @@
-type Rating = {
-  rate: number
-  count: number
+export type ResponseApi = {
+  limit: number
+  products: Product[]
+  skip: number
+  total: number
 }
 
 export type Product = {
   id: number
   title: string
-  price: number
   description: string
+  price: number
+  discountPercentage: number
+  rating: number
+  stock: number
+  brand: string
   category: string
-  image: string
-  rating: Rating
+  thumbnail: string
+  images: string[]
 }
 
 export type Cart = {
