@@ -3,6 +3,7 @@
 Simple ecommerce built with nextjs and zustand.
 
 ## Feature
+
 - [x] Add the product to the wishlist
 - [x] See product details
 - [x] Add product to cart
@@ -16,7 +17,8 @@ Simple ecommerce built with nextjs and zustand.
 3. [Zustand](https://github.com/pmndrs/zustand) - For persist your carts and wishlist
 4. [React Query](https://tanstack.com/query/v4) - As state management and data fetching
 5. [React Slick](https://react-slick.neostack.com/) - For create carousel component
-6. [Framer Motion](https://www.framer.com/motion/) - To make animation easily 
+6. [Framer Motion](https://www.framer.com/motion/) - To make animation easily
+7. [Next-PWA](https://github.com/shadowwalker/next-pwa) - To create Progressive Web Apps
 
 ## Run
 
