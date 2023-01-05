@@ -6,9 +6,9 @@ export default function ScrollToTop() {
     <button
       aria-label="scroll-top"
       onClick={() => useScrollToTop()}
-      className="absolute bottom-5 right-4 bg-violet-600 p-1 rounded-full"
+      className="absolute bottom-0 right-0 bg-violet-600 p-2 rounded-full"
     >
-      <BiArrowToTop className="w-6 h-6 md:w-7 md:h-7 fill-white" />
+      <BiArrowToTop className="w-7 h-7 md:w-7 md:h-7 fill-white" />
     </button>
   )
 }
