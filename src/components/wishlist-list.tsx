@@ -25,7 +25,11 @@ function WishlistCard({ id, img, price, title }: Wishlist) {
 
         <div className="flex items-center justify-between pr-10">
           <p className="text-sm text-gray-600">{formatCurrency(price)}</p>
-          <button onClick={() => removeWishlist(id)} className="w-fit mx-auto">
+          <button
+            aria-label="remove-wishlist"
+            onClick={() => removeWishlist(id)}
+            className="w-fit mx-auto"
+          >
             <BsTrash className="w-5 h-5 fill-gray-600" />
           </button>
         </div>

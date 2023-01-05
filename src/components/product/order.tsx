@@ -35,6 +35,7 @@ export default function Order({ id, img, title, stok, price }: TOrder) {
           <p className="font-medium">Total</p>
           <div className="flex items-center gap-x-1">
             <button
+              aria-label="decrement-product"
               disabled={count === 1}
               onClick={() => handleDecrementCount()}
             >
@@ -54,6 +55,7 @@ export default function Order({ id, img, title, stok, price }: TOrder) {
               className="border border-gray-100 rounded w-10 text-center bg-inherit"
             />
             <button
+              aria-label="increment-product"
               disabled={count === stok}
               onClick={() => handleIncrementCount()}
             >
@@ -67,7 +69,7 @@ export default function Order({ id, img, title, stok, price }: TOrder) {
         </div>
 
         <button
-          aria-label="btn-cart"
+          aria-label="add-cart"
           type="button"
           onClick={() => {
             appendToCarts({
@@ -119,6 +121,7 @@ function NotifAddToCart({
         className="absolute -top-12 left-0 right-0 m-auto w-fit py-2 px-5 mb-3 rounded bg-green-500 text-white text-center"
       >
         <button
+          aria-label="close-notification"
           onClick={() => closeNotif(false)}
           className="absolute -right-2 -top-2 p-1 bg-gray-500 rounded-full"
         >

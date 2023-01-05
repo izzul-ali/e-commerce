@@ -44,7 +44,10 @@ export default function Detail({
         <div className="flex justify-between items-center">
           <h3 className="font-semibold text-xl">{formatCurrency(price)}</h3>
 
-          <button onClick={() => setSave((prev) => !prev)}>
+          <button
+            aria-label="wishlist"
+            onClick={() => setSave((prev) => !prev)}
+          >
             {save ? (
               <AiFillHeart className="w-7 h-fit fill-violet-600" />
             ) : (

@@ -68,6 +68,7 @@ export default function Card({
 
           <div className="sm:flex-1 flex items-center justify-center gap-x-2">
             <button
+              aria-label="delete-cart"
               onClick={() => deleteFromCarts(id)}
               className="bg-gray-50 rounded px-2 py-[3px]"
             >
@@ -76,6 +77,7 @@ export default function Card({
             <div className="w-fit text-gray-600 border border-gray-300 rounded flex justify-center items-center gap-x-5 px-2">
               <div className="flex items-center gap-x-1">
                 <button
+                  aria-label="decrement-product-cart"
                   disabled={newCount <= 1}
                   onClick={() => handleDecrementCount()}
                 >
@@ -97,6 +99,7 @@ export default function Card({
                   className="rounded w-10 text-center bg-inherit"
                 />
                 <button
+                  aria-label="increment-product-cart"
                   disabled={newCount >= stok}
                   onClick={() => {
                     handleIncrementCount()
