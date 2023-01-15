@@ -78,12 +78,14 @@ export default function Card({
               <div className="flex items-center gap-x-1">
                 <button
                   aria-label="decrement-product-cart"
-                  disabled={newCount <= 1}
+                  disabled={newCount <= 1 || Number.isNaN(newCount)}
                   onClick={() => handleDecrementCount()}
                 >
                   <AiOutlineMinus
                     className={`${
-                      newCount === 1 ? 'fill-gray-600' : 'fill-violet-700'
+                      newCount <= 1 || Number.isNaN(newCount)
+                        ? 'fill-gray-600'
+                        : 'fill-violet-700'
                     }`}
                   />
                 </button>

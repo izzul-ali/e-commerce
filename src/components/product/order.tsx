@@ -36,12 +36,14 @@ export default function Order({ id, img, title, stok, price }: TOrder) {
           <div className="flex items-center gap-x-1">
             <button
               aria-label="decrement-product"
-              disabled={count === 1}
+              disabled={count <= 1 || Number.isNaN(count)}
               onClick={() => handleDecrementCount()}
             >
               <AiOutlineMinus
                 className={`${
-                  count === 1 ? 'fill-gray-400' : 'fill-violet-700'
+                  count <= 1 || Number.isNaN(count)
+                    ? 'fill-gray-400'
+                    : 'fill-violet-700'
                 }`}
               />
             </button>
@@ -84,7 +86,11 @@ export default function Order({ id, img, title, stok, price }: TOrder) {
             })
             setNotif(true)
           }}
-          className="text-xs md:text-sm px-2 truncate py-2 bg-violet-700 text-white rounded w-full"
+          disabled={count < 1 || Number.isNaN(count)}
+          className={`
+          text-xs md:text-sm px-2 truncate py-2 text-white rounded w-full ${
+            count < 1 || Number.isNaN(count) ? 'bg-violet-500' : 'bg-violet-700'
+          }`}
         >
           <p className="font-medium tracking-wide">Masukkan ke Keranjang</p>
           <p className="truncate">

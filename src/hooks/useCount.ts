@@ -7,16 +7,16 @@ const useCount = (setCount: Dispatch<SetStateAction<number>>) => {
       return
     }
 
-    if (Number.isNaN(countInput) || countInput < 1) {
-      setCount(1)
-      return
-    }
-
     setCount(countInput)
   }, [])
 
   const handleIncrementCount = () => {
-    setCount((prev) => prev + 1)
+    setCount((prev) => {
+      if (Number.isNaN(prev)) {
+        return (prev = 1)
+      }
+      return prev + 1
+    })
   }
 
   const handleDecrementCount = () => {
