@@ -39,10 +39,27 @@ const useCart = create<ICart>()(
 
           // product is available in carts
           if (productIndex !== -1) {
+            const relateProduct = carts[productIndex]
+
+            const amountProductInCart: number =
+              relateProduct.count + product.count
+
+            // if the amountProductInCart greater than product stok
+            // assign product count value in cart to product stock
+            if (amountProductInCart > relateProduct.stok) {
+              carts[productIndex] = {
+                ...carts[productIndex],
+                count: relateProduct.stok
+              }
+              return
+            }
+
+            // recalculate product count in cart
             carts[productIndex] = {
               ...carts[productIndex],
-              count: carts[productIndex].count + product.count
+              count: relateProduct.count + product.count
             }
+
             return
           }
 
@@ -52,8 +69,7 @@ const useCart = create<ICart>()(
         },
 
         totalProductInCarts() {
-          const { carts } = get()
-          return carts.length
+          return get().carts.length
         },
 
         deleteFromCarts(id) {
@@ -93,7 +109,7 @@ const useCart = create<ICart>()(
           if (productIndex !== -1) {
             carts[productIndex] = {
               ...carts[productIndex],
-              isSelected: isSelected
+              isSelected
             }
 
             // recalculate total price
